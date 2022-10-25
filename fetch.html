@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        預設請求方式為get
+        fetch('https://kktix.com/events.json')//,{method:get} 設定
+            .then(response => {
+                // 可以透過 .blob()圖片, .json(), .text()文字 轉成可用的資訊
+                return response.json()
+            })
+            .then(json => {
+                console.log(json.title)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+            .finally(() => {
+                console.log('請求結束')
+            })
+
+        const fetchData = async () => {
+            try {
+                const response = await fetch('https://kktix.com/events.json')
+                const json = await response.json()
+                console.log(json.title)
+            } catch (error) {
+                console.log(error)
+            }
+            console.log('請求結束')
+        }
+
+        fetchData()
+
+        fetch('https://jsonplaceholder.typicode.com/users', {
+            method: 'post',
+            body: JSON.stringify({
+                name: 'aaa',
+                email: 'aaa@gmail.com'
+            }),
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+            .then(response => {
+                // 可以透過 .blob()圖片, .json(), .text()文字 轉成可用的資訊
+                return response.json()
+            })
+            .then(json => {
+                console.log(json)
+            })
+    </script>
+</body>
+
+</html>

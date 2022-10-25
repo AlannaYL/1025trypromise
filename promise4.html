@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const wait = (ms, ok) => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    if (ok) resolve(`過了${ms}毫秒`)
+                    else reject(new Error(`錯誤，過了${ms}毫秒`))
+                }, ms)
+            })
+        }
+
+        // Promise.all(Promise陣列)
+        // 陣列所有都成功時才會.then(回傳陣列)
+        // 只要陣內有一個錯誤-reject就會跳到catch
+        Promise.all([wait(3000, true), wait(2000, true), wait(5000, true)])
+            .then(result => {
+                console.log('all' + result)
+            })
+            .catch(error => {
+                console.log('all' + error)
+            })
+
+
+        // Promise.race(Promise陣列)
+        // 只會回傳第一個(時間最快的or最先)結果，resolve 就到then、reject就到catch
+        Promise.race([wait(1000, false), wait(2000, true), wait(5000, true)])
+            .then(result => {
+                console.log('race' + result)
+            })
+            .catch(error => {
+                console.log('race' + error)
+            })
+    </script>
+</body>
+
+</html>

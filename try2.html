@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        const validate = input => {
+            let ok = fale
+
+            try {
+                if (input === undefined || input === null) throw new Error('沒有輸入內容') //如果發生錯誤比較多
+                else if (typeof input !== Number) throw new Error('必須是數字')//(a)
+                else if (input < 0) throw new Error('必須大於0')//(b)
+                else if (input >= 10) throw new Error('必須小於10')//(c)
+                console.log('驗證成功')
+                ok = true
+            } catch (error) {
+                // switch {寫下錯誤}
+                console.log(error)
+                console.log(error.name)
+                console.log(error.message)
+            }
+
+            return ok
+        }
+        validate()
+        validate(0)
+        validate(10)
+        validate('aaa')
+        validate(8)
+    </script>
+</body>
+
+</html>

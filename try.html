@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 不會因為整個錯誤停掉程序
+        // 只要執行try發生錯誤就跳到catch
+        try {
+            alertt('abc')
+            // 放置(e)錯誤
+        } catch (error) {
+            // 錯誤看不見，除非自己console.log
+            console.log(error)
+            console.log(error.name)
+            console.log(error.message)
+            // 整組結束要做甚麼事情，少用
+        } finally {
+        }
+
+        console.log('結束')
+    </script>
+</body>
+
+</html>
